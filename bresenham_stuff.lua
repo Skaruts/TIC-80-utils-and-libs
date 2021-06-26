@@ -34,30 +34,31 @@
 			circle=function(xc,yc,r)
 				-- TODO: test this
 				local pts={}
-				local _p=function(x,y)pts[#pts+1]={x=x,y=y}end
-				local _circle=function(xc,yc,x,y)
-				    _p(xc+x, yc+y)
-				    _p(xc-x, yc+y)
-				    _p(xc+x, yc-y)
-				    _p(xc-x, yc-y)
-				    _p(xc+y, yc+x)
-				    _p(xc-y, yc+x)
-				    _p(xc+y, yc-x)
-				    _p(xc-y, yc-x)
+				-- TODO: are inner functions like these bad?
+				local p=function(x,y)pts[#pts+1]={x=x,y=y}end
+				local circle=function(xc,yc,x,y)
+					p(xc+x, yc+y)
+					p(xc-x, yc+y)
+					p(xc+x, yc-y)
+					p(xc-x, yc-y)
+					p(xc+y, yc+x)
+					p(xc-y, yc+x)
+					p(xc+y, yc-x)
+					p(xc-y, yc-x)
 				end
 
-			    local x,y,d=0,r,3-2*r
+				local x,y,d=0,r,3-2*r
 
-			    _circle(xc,yc,x,y)
-			    while y>=x do
-			        x=x+1
-			        if d>0 then
-			            y=y-1
-			            d=d+4*(x-y)+10
-			        else
-			            d=d+4*x+6
-			        end
-			        _circle(xc,yc,x,y)
+				circle(xc,yc,x,y)
+				while y>=x do
+					x=x+1
+					if d>0 then
+						y=y-1
+						d=d+4*(x-y)+10
+					else
+						d=d+4*x+6
+					end
+					circle(xc,yc,x,y)
 				end
 				return pts
 			end
