@@ -1,4 +1,4 @@
-## TIC-80 Screen fading system
+# Screen fading system
 
 TODO docs... sorry :(
 
