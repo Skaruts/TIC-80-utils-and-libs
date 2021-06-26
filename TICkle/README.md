@@ -1,6 +1,6 @@
 # TICkle IMGUI
 
-TICkle is an immediate mode GUI system. The goal is to make it small, simple to use, and flexible. Given TIC-80's code limits, making it (and keeping it) small is the primary goal. It's not meant for overly complex UIs, but I don't quite know how far one can go with it. Some things work rather simplistically and will probably stay that way. For example, overlapping widgets won't work well, unless one of them is locked. If you need a more complex UI I'd probably recommend using [TICUare](https://github.com/Crutiatix/TICuare).
+TICkle is an immediate mode GUI system. The goal is to make it small, simple to use, and flexible. Given TIC-80's code limits, making it (and keeping it) small is the primary goal. It's not meant for overly complex UIs, but I don't quite know how far one can go with it. Some things work rather simplistically and will probably stay that way. For example, overlapping widgets won't work well, unless one of them is locked. If you need a more complex UI I'd probably recommend using [TICuare](https://github.com/Crutiatix/TICuare).
 
 I'm no expert UI crafter, so don't expect something expertly done here. This is an experimental learning project I've been working on for some time in *LÖVE* and ported to TIC-80 out of the need for a small and minimalistic GUI.
 
