@@ -51,8 +51,14 @@
 		-- problems. You can use 'with_clip' to be safer:
 		--     with_clip(10,10,50,50, function()
 		--         -- stuff
+		--         with_clip(20,20,30,30, function()
+		--             -- more stuff
+		--         end
 		--     end)
-
+		--
+		-- clip() will reset to the last used clipping area.
+		-- If there's no last one, then it finally resets to
+		-- screen size.
 		local _clpq,clip,with_clip={
 			clip=clip,lvls={},
 			push=function(t,c)t.lvls[#t.lvls+1]=c end,
@@ -81,6 +87,7 @@
 		end
 
 	--[[ sprg - spr but grid based             008 ]]
+		-- 'gs' is the grid_size
 		local function sprg(gs,i,x,y,ac,s,f,r,cw,ch)
 			spr(i,x*gs,y*gs,ac or -1,s or 1,f or false,r or 0,cw or 1,ch or 1)
 		end
