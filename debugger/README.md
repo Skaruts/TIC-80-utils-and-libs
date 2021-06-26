@@ -22,6 +22,7 @@ end
 
 And add a way to use the `dbg.key`:
 
+```lua
 function TIC()
 	-- stuff
 
@@ -33,6 +34,7 @@ function TIC()
 
 	dbg:draw()
 end
+```
 
 
 #### Debugging
@@ -55,9 +57,7 @@ function func1()
 end
 
 function func2()
-	bma("func1's bm", func1) --_bm
-
-	-- stuff
+	bma("func1's bm", func1)
 end
 ```
 
@@ -77,6 +77,6 @@ A call to `bm()` or `bma()` will display the benchmark results in the same way `
 
 `bma()` differs from `bm()` in that `bma()` also calculates and displays an average of the benchmarking results. This is useful when the results fluctuate too much to be readable.
 
-(The `--_bm`, `--start_bm` and `--end_bm` comments are a personal convention of mine that you can ignore if you want. They make it easy for me to select and delete all benchmarks at once if I want. My choice to not indent benchmark lines that wrap code, is also a personal preference.)
+(The `--start_bm` and `--end_bm` comments are a personal convention of mine that you can ignore if you want. They make it easy for me to select and delete all benchmarks at once if I want. My choice to not indent benchmark lines that wrap code, is also a personal preference.)
 
 
