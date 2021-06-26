@@ -22,8 +22,9 @@ TICkle depends on a few of my utilities and shortenings:
  - dmerge            (table_utils.lua)
 
 These functions must be called every frame:
- - `**ui.start_frame()**` - call before using the UI in any way, so that it can prepare things and gather user input.
- - `**ui.end_frame()**` - call when there's no more UI related stuff being done. All rendering is done in here.
+
+ - **`ui.start_frame()`** - call before using the UI in any way, so that it can prepare things and gather user input.
+ - **`ui.end_frame()`** - call when there's no more UI related stuff being done. All rendering is done in here.
 
 If your game uses the mouse, and you want to avoid mouse input affecting your game when the mouse is over the UI, you can wrap your mouse handling code in a simple check:
 
@@ -67,15 +68,15 @@ All functions that start with `with_` are inspired by Python's `with` keyword, a
 
 These are the functions you can use to alter the state of the UI:
 
- - `**ui.show()**`
- - `**ui.hide()**`
- - `**ui.with_visible(b,f)**`
- - `**ui.enable()**`
- - `**ui.disable()**`
- - `**ui.with_active(b,f)**`
- - `**ui.lock()**`
- - `**ui.unlock()**`
- - `**ui.with_locked(b,f)**`
+ - **`ui.show()`**
+ - **`ui.hide()`**
+ - **`ui.with_visible(b,f)`**
+ - **`ui.enable()`**
+ - **`ui.disable()`**
+ - **`ui.with_active(b,f)`**
+ - **`ui.lock()`**
+ - **`ui.unlock()`**
+ - **`ui.with_locked(b,f)`**
 
 
 
@@ -204,8 +205,8 @@ An item's id and local id are both stored in `item.id` and `item.lid`.
 
 There are two functions you can use for this:
 
-- `**Item:check_hovered(gx, gy, w, h)**`
-- `**Item:check_pressed()**`
+- **`Item:check_hovered(gx, gy, w, h)`**
+- **`Item:check_pressed()`**
 
 `Item:check_hovered` takes a global position and a size, and checks whether the mouse is within that rectangle. This function will set the following boolean fields in the item:
  - item.hovered        - is the item currently under the mouse
