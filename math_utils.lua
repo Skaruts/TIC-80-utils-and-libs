@@ -12,7 +12,7 @@
 		local function lerp(a,b,t)return a*(1-t)+b*t end
 
 	--[[ sign - get the sign of v              002 ]]
-		local function sign(v)return v>0 and 1 or v<0 and -1 or 0 end
+		local function sign(v)return v>=0 and 1 or -1 end
 
 	--[[ dist - pythagorian distance           001 ]]
 		local function dist(x,y,x2,y2)local a,b=x-x2,y-y2 return sqrt(a*a+b*b)end
