@@ -101,7 +101,7 @@ These are the functions you can use to alter the state of the UI:
 
 ### Rendering items
 
-The visuals of items are not done by directly calling any of the rendering functions in TIC-80 (rect, spr, print, etc). TICkle defers all the rendering to the end of a frame, as this allows control over when exactly the UI should be rendered (and maybe it makes it a bit more performant, but don't quote me one that).
+The visuals of items are not done by directly calling any of the rendering functions in TIC-80 (rect, spr, print, etc). TICkle defers all the rendering to the end of a frame, as this allows control over when exactly the UI should be rendered (and maybe it makes it a bit more performant, but don't quote me on that).
 
 To achieve this, TICkle has equivalent functions that instead of drawing, they add a render step to a list that is iterated through at frame end. By deafult, these are the ones available:
  - ui.rect
