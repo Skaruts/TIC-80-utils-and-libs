@@ -1,8 +1,8 @@
 # TICkle IMGUI
 
-TICkle is an immediate mode GUI system. The goal is to make it small, simple to use, and flexible. Given TIC-80's code limits, making it (and keeping it) small is the primary goal. It's not meant for overly complex UIs, but I don't quite know how far one can go with it. Some things work rather simplistically and will probably stay that way. For example, overlapping widgets won't work well, unless one of them is locked. If you need a more complex UI I'd probably recommend using TICUare.
+TICkle is an immediate mode GUI system. The goal is to make it small, simple to use, and flexible. Given TIC-80's code limits, making it (and keeping it) small is the primary goal. It's not meant for overly complex UIs, but I don't quite know how far one can go with it. Some things work rather simplistically and will probably stay that way. For example, overlapping widgets won't work well, unless one of them is locked. If you need a more complex UI I'd probably recommend using [TICUare](https://github.com/Crutiatix/TICuare).
 
-I'm no expert UI crafter, so don't expect something expertly done here. This is an experimental learning project I've been working on for some time in LÖVE and ported to TIC-80 out of the need for a small and minimalistic GUI.
+I'm no expert UI crafter, so don't expect something expertly done here. This is an experimental learning project I've been working on for some time in *LÖVE* and ported to TIC-80 out of the need for a small and minimalistic GUI.
 
 TICkle is a framework, not a ready-made GUI out of the box. It doesn't come with any defined widgets, it just gives you building blocks to develop them however you like, and it's extendable. This way the UI won't take up any more characters than you really need it to.
 
@@ -19,11 +19,11 @@ It ought to support keyboard/gamepad input, but for now the code for that is sti
 ## Usage
 
 TICkle depends on a few of my utilities and shortenings:
- - mouse_states      (mouse/mouse_states.lua)
- - clip/with_clip	 (drawing_utils.lua)
- - unpk, setmt       (common_shortenings.lua)
- - fmt               (common_shortenings.lua) - this is only for the __tostring, which is for debugging only
- - dmerge            (table_utils.lua)
+ - [mouse_states](../mouse/mouse_states.lua)
+ - [clip/with_clip](../drawing_utils.lua)
+ - [unpk, setmt](../common_shortenings.lua)
+ - [fmt](../common_shortenings.lua) - this is only for the __tostring, which is for debugging only, so you can remove/ignore it
+ - [dmerge](../table_utils.lua)
 
 These functions must be called every frame:
 
@@ -70,7 +70,7 @@ end
 
 All functions that start with `with_` are inspired by Python's `with` keyword, and they handle starting and ending a process safely. In the code above, `with_locked` will lock or unlock the ui according to `popup`, execute the code for the `Container`, and then revert back to the previous locked state. So the items that exist outside of `with_locked` are unaffected.
 
-These are the functions you can use to alter the state of the UI:
+You can use these functions to alter the state of the UI:
 
  - **`ui.show()`**
  - **`ui.hide()`**
@@ -152,7 +152,7 @@ local b = Button("b2", 10, 20, "Click me too!")
 if b.pressed then trace("2nd button pressed") end
 ```
 
-Those two items are mere buttons and have no child items, but keep in mind that for container types, you will more often need the first option (or a mix of both), so you can create items inside them. Items invoked within the code of other items become their children. For example, the Button below is a child of the Container.
+Those two items are mere buttons and have no child items, but for container types you will more often need the first option (or a mix of both), so you can create items inside them. Items invoked within the code of other items become their children. For example, the Button below is a child of the Container.
 
 ```lua
 Container("cont", 10, 10, 50, 50, function(t)
@@ -277,13 +277,13 @@ From within the item you can then call `item.code` to run the function with its 
 
 Since Lua is very flexible, TICkle can probably be extended in more ways than I can think of. But there are some ways I've already extended it myself:
 
-1- addons (if one can call them that): this is very experimental, and curently there's one addon for tooltips in `tickle_extensions.lua`. An addon can define its own `start_frame` and `end_frame` functions, which are called by the UI, and can be added to the UI using `ui.add_addon` at startup.
+1- addons (if one can call them that): this is very experimental, and curently there's one addon for tooltips in [tickle_extensions.lua](tickle_extensions.lua). An addon can define its own `start_frame` and `end_frame` functions, which are called by the UI, and can be added to the UI using `ui.add_addon` at startup.
 
 2- Theme: even though there's only 16 colors in TIC-80, you could still define a `theme` table containing colors and styles for various types of items and states. The implementation of each item should decide what colors to use from there, depending on its state (and the ui state -- visible, locked, etc).
 
 You can also define standalone styles to be used in special items. Styles can be passed into the `options` parameter of the item, and if an item receives a style, it should use the style instead of the theme.
 
-3- Rendering steps: the UI comes with functions for all basic drawing functions in TIC-80 (rect, spr, print, etc), but you can also add your own. You can check out `tickle_extensions.lua` for some examples. To add a rendering step, you call `ui.add_render_step(func_name, render_step_func, render_func)`.
+3- Rendering steps: the UI comes with functions for all basic drawing functions in TIC-80 (rect, spr, print, etc), but you can also add your own. You can check out [tickle_extensions.lua](tickle_extensions.lua) for some examples. To add a rendering step, you call `ui.add_render_step(func_name, render_step_func, render_func)`.
 
 ```lua
 -- define the function that will actually draw something:
@@ -305,4 +305,4 @@ end
 ui.add_render_step("sprp", rs_sprp,	sprp)
 ```
 
-(The example above is already defined in `tickle_extensions.lua`.)
+(The example above is already defined in [tickle_extensions.lua](tickle_extensions.lua).)
