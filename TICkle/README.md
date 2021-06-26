@@ -206,7 +206,7 @@ end)
 
 ---
 
-### Cheking mouse input
+### Checking mouse input
 
 There are two functions you can use for this:
 
@@ -218,7 +218,7 @@ There are two functions you can use for this:
  - item.mouse_entered  - has the mouse just entered the item's rect
  - item.mouse_exited   - has the mouse just exited the item's rect
 
-It will also give the UI a reference to an item when it has a `item.tip` field, and if it's being hovered. This reference (`ui.info_item`) can be used to show a tooltip, but how that tooltip should be shown is up to you to define (this is because there's more than one ways of doing this: a floating label below the mouse, a piece of text in an info bar at the bottom, etc. TICKle tries to not make many assumptions about it).
+It will also give the UI a reference to an item when it has a `item.tip` field, and if it's being hovered. This reference (`ui.info_item`) can be used to show a tooltip, but how that tooltip should be shown is up to you to define (this is because there's more than one ways of doing this: a floating label below the mouse, a piece of text in an info bar at the bottom, etc. TICkle tries to not make many assumptions about it. Also, this way the base UI is kept smaller, as not all UIs require tooltips).
 
 `Item:check_pressed` takes no arguments, and checks whether the mouse is interacting with the item. It will set the following boolean fields in the item:
  - item.pressed  - has the button just been pressed
@@ -275,15 +275,15 @@ From within the item you can then call `item.code` to run the function with its 
 
 ## Extending TICkle
 
-Since Lua is very flexible, TICkle can be extended probably in more ways than those I can think of. But there are some ways I've already extended it myself:
+Since Lua is very flexible, TICkle can probably be extended in more ways than I can think of. But there are some ways I've already extended it myself:
 
-1- addons (if one can call them that): this is very experimental, and curently there's one addon for tooltips in `tickle_extensions.lua`. Tooltips were added as an addon to keep the base UI smaller (not all UIs need tooltips). An addon can define its own `start_frame` and `end_frame` functions, which are called by the UI, and can be added to the UI using `ui.add_addon` at startup.
+1- addons (if one can call them that): this is very experimental, and curently there's one addon for tooltips in `tickle_extensions.lua`. An addon can define its own `start_frame` and `end_frame` functions, which are called by the UI, and can be added to the UI using `ui.add_addon` at startup.
 
 2- Theme: even though there's only 16 colors in TIC-80, you could still define a `theme` table containing colors and styles for various types of items and states. The implementation of each item should decide what colors to use from there, depending on its state (and the ui state -- visible, locked, etc).
 
 You can also define standalone styles to be used in special items. Styles can be passed into the `options` parameter of the item, and if an item receives a style, it should use the style instead of the theme.
 
-3- Rendering steps: the UI comes with functions for all basic drawing functions in TIC-80 (rect, spr, print, etc), but you can also add your own. You can check out tiny_imui_extensions.lua for some examples. To add a rendering step:
+3- Rendering steps: the UI comes with functions for all basic drawing functions in TIC-80 (rect, spr, print, etc), but you can also add your own. You can check out tiny_imui_extensions.lua for some examples. To add a rendering step, you call `ui.add_render_step(func_name, render_step_func, render_func)`.
 
 ```lua
 -- define the function that will actually draw something:
@@ -296,6 +296,7 @@ end
 
 -- define the function that adds that function to the list of render steps
 -- this will become 'ui.sprp()' that you can call in your ui items
+-- (this function will be very similar for most render steps)
 local function rs_sprp(...)
 	ui.push_render_step("sprp", {...})
 end
@@ -304,4 +305,4 @@ end
 ui.add_render_step("sprp", rs_sprp,	sprp)
 ```
 
-(The example above is already defined in tiny_imui_extensions.lua)
+(The example above is already defined in tiny_imui_extensions.lua.)
