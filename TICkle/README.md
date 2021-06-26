@@ -275,13 +275,13 @@ From within the item you can then call `item.code` to run the function with its 
 
 Since Lua is very flexible, TICkle can be extended probably in more ways than those I can think of. But there are some ways I've already extended it myself:
 
- 1- addons (if one can call them that): this is very experimental, and curently there's one addon for tooltips in `tickle_extensions.lua`. Tooltips were added as an addon to keep the base UI smaller (not all UIs need tooltips). An addon can define its own `start_frame` and `end_frame` functions, which are called by the UI, and can be added to the UI using `ui.add_addon` at startup.
+1- addons (if one can call them that): this is very experimental, and curently there's one addon for tooltips in `tickle_extensions.lua`. Tooltips were added as an addon to keep the base UI smaller (not all UIs need tooltips). An addon can define its own `start_frame` and `end_frame` functions, which are called by the UI, and can be added to the UI using `ui.add_addon` at startup.
 
- 2- Theme: even though there's only 16 colors in TIC-80, you could still define a `theme` table containing colors and styles for various types of items and states. The implementation of each item should decide what colors to use from there, depending on its state (and the ui state -- visible, locked, etc).
+2- Theme: even though there's only 16 colors in TIC-80, you could still define a `theme` table containing colors and styles for various types of items and states. The implementation of each item should decide what colors to use from there, depending on its state (and the ui state -- visible, locked, etc).
 
- You can also define standalone styles to be used in special items. Styles can be passed into the `options` parameter of the item, and if an item receives a style, it should use the style instead of the theme.
+You can also define standalone styles to be used in special items. Styles can be passed into the `options` parameter of the item, and if an item receives a style, it should use the style instead of the theme.
 
- 3- Rendering steps: the UI comes with functions for all basic drawing functions in TIC-80 (rect, spr, print, etc), but you can also add your own. You can check out tiny_imui_extensions.lua for some examples. To add a rendering step:
+3- Rendering steps: the UI comes with functions for all basic drawing functions in TIC-80 (rect, spr, print, etc), but you can also add your own. You can check out tiny_imui_extensions.lua for some examples. To add a rendering step:
 
 ```lua
 -- define the function that will actually draw something:
