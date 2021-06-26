@@ -283,7 +283,7 @@ Since Lua is very flexible, TICkle can probably be extended in more ways than I 
 
 You can also define standalone styles to be used in special items. Styles can be passed into the `options` parameter of the item, and if an item receives a style, it should use the style instead of the theme.
 
-3- Rendering steps: the UI comes with functions for all basic drawing functions in TIC-80 (rect, spr, print, etc), but you can also add your own. You can check out tiny_imui_extensions.lua for some examples. To add a rendering step, you call `ui.add_render_step(func_name, render_step_func, render_func)`.
+3- Rendering steps: the UI comes with functions for all basic drawing functions in TIC-80 (rect, spr, print, etc), but you can also add your own. You can check out `tickle_extensions.lua` for some examples. To add a rendering step, you call `ui.add_render_step(func_name, render_step_func, render_func)`.
 
 ```lua
 -- define the function that will actually draw something:
@@ -305,4 +305,4 @@ end
 ui.add_render_step("sprp", rs_sprp,	sprp)
 ```
 
-(The example above is already defined in tiny_imui_extensions.lua.)
+(The example above is already defined in `tickle_extensions.lua`.)
