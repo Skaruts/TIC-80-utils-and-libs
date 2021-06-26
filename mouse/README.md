@@ -24,7 +24,7 @@ Then you can use `mbtn()` or `mbtnp()`, etc, just as you would use `btnp()` or `
 
  - **`update_mst()`** - call this function before input handling to update mouse states
 
- - **`mbtn( [M1|M2|M3] )`** - test if a mouse button is currently pressed. Calling without arguments tests if *any* mouse button is currently pressed.
+ - **`mbtn( [M1|M2|M3] )`** - test if a mouse button is held down. Calling without arguments tests if *any* mouse button is held down.
  - **`mbtnp( [M1|M2|M3] )`** - test if a mouse button was just pressed. Calling without arguments tests if *any* mouse button was just pressed.
  - **`mbtnr( [M1|M2|M3] )`** - test if a mouse button was just released. Calling without arguments tests if *any* mouse button was just released.
  - **`mbtnt( [M1|M2|M3] )`** - see how many frames a mouse button has been held down for. Calling without arguments returns the held time in frames for all 3 buttons (3 return values).
