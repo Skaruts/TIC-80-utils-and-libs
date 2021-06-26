@@ -1,7 +1,8 @@
-## TIC 80 Debugger
+# Debugger
 
+---
 
-#### Usage
+## Usage
 
 Tweak the default settings:
  - `dbg.key` - key to toggle the debugger on/off
@@ -36,20 +37,27 @@ function TIC()
 end
 ```
 
+---
+## Debugging
 
-#### Debugging
-
-You can track values using `monitor(key,val,n)`:
+You can track/monitor values using `monitor(key,val,n)`:
 
 ```lua
-monitor("hp:", player.hp)
-monitor("dt", fmt("%.3f", dt)) -- delta time
-monitor("fps", fmt("%d",1//dt))
+function TIC()
+	-- stuff
+
+	monitor("hp:", player.hp)
+	monitor("dt", fmt("%.3f", dt)) -- delta time
+	monitor("fps", fmt("%d",1//dt))
+end
 ```
 
 The optional 3rd argument `n` is for aligning the values at 'n' amount of characters from the left.
 
-You can also do benchmarks by passing a function to `bm()` or `bma()`:
+---
+## Benchmarking
+
+You can do benchmarks by passing a function to `bm()` or `bma()`:
 
 ```lua
 function func1()
