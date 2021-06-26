@@ -1,16 +1,18 @@
 # TICkle IMGUI
 
-TICkle is an immediate mode GUI system. The goal is to make it small, simple to use, and flexible. Given TIC-80's code limits, making it (and keeping it) small is the primary goal.
+TICkle is an immediate mode GUI system. The goal is to make it small, simple to use, and flexible. Given TIC-80's code limits, making it (and keeping it) small is the primary goal. It's not meant for overly complex UIs, but I don't quite know how far one can go with it. Some things work rather simplistically and will probably stay that way. For example, overlapping widgets won't work well, unless one of them is locked. If you need a more complex UI I'd probably recommend using TICUare.
 
-I'm no expert UI crafter, though, so don't expect something expertly done. This is an experimental learning project I've been working on for some time in LÖVE and ported to TIC-80 out of the need for a small and minimalistic GUI.
+I'm no expert UI crafter, so don't expect something expertly done here. This is an experimental learning project I've been working on for some time in LÖVE and ported to TIC-80 out of the need for a small and minimalistic GUI.
 
-TICkle is a framework, not a ready-made GUI out of the box. It doesn't come with any defined widgets, it just gives you building blocks to develop them however you like, and it's extendable. (TODO: some examples.)
+TICkle is a framework, not a ready-made GUI out of the box. It doesn't come with any defined widgets, it just gives you building blocks to develop them however you like, and it's extendable. This way the UI won't take up any more characters than you really need it to.
+
+(TODO: some examples.)
 
 Widgets are called 'items' in the framework (shorter and easier to type).
 
 This is very WIP, so the code is still a bit messy and full of unnecessary comments that take a toll in the character limits of TIC-80, unless you're using v0.80+.
 
-It ought to support keyboard/gamepad input, but the code for this is still very rough and untested.
+It ought to support keyboard/gamepad input, but for now the code for that is still very rough and untested.
 
 ---
 
