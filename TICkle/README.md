@@ -1,4 +1,4 @@
-## TICkle IMGUI
+# TICkle IMGUI
 
 TICkle is an immediate mode GUI system. The goal is to make it small, simple to use, and flexible. Given TIC-80's code limits, making it (and keeping it) small is the primary goal.
 
@@ -14,7 +14,7 @@ It ought to support keyboard/gamepad input, but the code for this is still very 
 
 ---
 
-### Usage
+## Usage
 
 TICkle depends on a few of my utilities and shortenings:
  - mouse_states      (mouse/mouse_states.lua)
@@ -101,7 +101,7 @@ These are the functions you can use to alter the state of the UI:
 ---
 
 
-### Rendering items
+## Rendering items
 
 The visuals of items are not done by directly calling any of the rendering functions in TIC-80 (rect, spr, print, etc). TICkle defers all the rendering to the end of a frame, as this allows control over when exactly the UI should be rendered (and maybe it makes it a bit more performant, but don't quote me on that).
 
@@ -123,7 +123,7 @@ Note: TICkle uses my own custom `clip` function, which allows nesting clipping t
 
 
 
-### Defining items
+## Defining items
 
 A UI item is simply a function you can call. For example, a simple generic label can look like this:
 
@@ -160,7 +160,7 @@ end)
 
 ---
 
-#### Item Parameters
+### Item Parameters
 
 Every item takes at least an id and a position. Both the id and position are relative the parent. A width and height are optional, but if the item should receive any mouse input, then they should not be zero.
 
@@ -188,7 +188,7 @@ The third reserved field is the arguments passed to the `code` function, which a
 ---
 
 
-#### Item ids
+### Item ids
 
 Ids are strings, and can be whatever you want, but must be unique. Items with the same id may not work properly, unless they're children of different parents, since ids are relative to the item's parent. In the example below, the two buttons called `"b1"` are children of the parents `"c1"` and `"c2"`, so TICkle will turn their ids into `"c1.b1"` and `"c2.b1"`.
 
@@ -204,7 +204,7 @@ end)
 
 ---
 
-#### Cheking mouse input
+### Cheking mouse input
 
 There are two functions you can use for this:
 
@@ -271,7 +271,7 @@ From within the item you can then call `item.code` to run the function with its 
 
 
 
-### Extending TICkle
+## Extending TICkle
 
 Since Lua is very flexible, TICkle can be extended probably in more ways than those I can think of. But there are some ways I've already extended it myself:
 
