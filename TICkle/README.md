@@ -12,6 +12,8 @@ This is very WIP, so the code is still a bit messy and full of unnecessary comme
 
 It ought to support keyboard/gamepad input, but the code for this is still very rough and untested.
 
+---
+
 ### Usage
 
 TICkle depends on a few of my utilities and shortenings:
@@ -188,15 +190,15 @@ The third reserved field is the arguments passed to the `code` function, which a
 
 #### Item ids
 
-Ids are strings, and can be whatever you want, but must be unique. Items with the same id may not work properly, unless they're children of different parents, since ids are relative to the item's parent. In the example below, the two buttons called `"b1"` are children of the parents `"c1"` and `"c2"`, then TICkle will turn their ids into `"c1.b1"` and `"c2.b1"`.
+Ids are strings, and can be whatever you want, but must be unique. Items with the same id may not work properly, unless they're children of different parents, since ids are relative to the item's parent. In the example below, the two buttons called `"b1"` are children of the parents `"c1"` and `"c2"`, so TICkle will turn their ids into `"c1.b1"` and `"c2.b1"`.
 
 ```lua
 Container("c1", 10, 10, 50, 50, function(t)
-	Button("b1", 5, 5, "Click me!")
+	Button("b1", 5, 5, "Click me!")  -- c1.b1
 end)
 
 Container("c2", 60, 10, 50, 50, function(t)
-	Button("b1", 5, 5, "Click me!")   --  <-- this is fine!
+	Button("b1", 5, 5, "Click me!")  -- c2.b1
 end)
 ```
 
@@ -214,18 +216,17 @@ There are two functions you can use for this:
  - item.mouse_entered  - has the mouse just entered the item's rect
  - item.mouse_exited   - has the mouse just exited the item's rect
 
-It will also give the UI a reference to an item that has a item.tip field if it's being hovered. This reference (`ui.info_item`) can be used to show a tooltip on top of everything else.)
+It will also give the UI a reference to an item when it has a `item.tip` field, and if it's being hovered. This reference (`ui.info_item`) can be used to show a tooltip, but how that tooltip should be shown is up to you to define (this is because there's more than one ways of doing this: a floating label below the mouse, a piece of text in an info bar at the bottom, etc. TICKle tries to not make many assumptions about it).
 
 `Item:check_pressed` takes no arguments, and checks whether the mouse is interacting with the item. It will set the following boolean fields in the item:
  - item.pressed  - has the button just been pressed
  - item.released - has the button just been released
  - item.held     - is the button being held down
 
-`Item:check_hovered` will functions will also handle tooltip timing and showing/hiding.
-
+A generic button might look like this:
 
 ```lua
-function SomeItem(id, x, y, w, h, index, options)
+function Button(id, x, y, w, h, index, options)
 	return ui.with_item(id, x, y, w, w, options, function(t,...)
 		-- check if the mouse is hovering this item
 		t:check_hovered(t.gx, t.gy, w, h) -- you could also use t.w and t.h here
@@ -242,7 +243,7 @@ function SomeItem(id, x, y, w, h, index, options)
 end
 ```
 
-From the item you can then call `item.code` to run it. The order of rendering and content depends on the item being implemented. You will probably want the background rendered before the content, though.
+From within the item you can then call `item.code` to run the function with its content. When to run it is up to you, but remember you might want to render the background of this item behind its content, so in most cases, perhaps it's better to do at least some of the rendering first. (This is not important in items that have no children.)
 
 
 
@@ -274,13 +275,13 @@ From the item you can then call `item.code` to run it. The order of rendering an
 
 Since Lua is very flexible, TICkle can be extended probably in more ways than those I can think of. But there are some ways I've already extended it myself:
 
-1- addons: this is very experimental, and curently there's one addon for tooltips. Tooltips were added as an addon to keep the base UI smaller. An addon can define its own `start_frame` and `end_frame` functions, which are called by the UI, and can be added to the UI using `ui.add_addon` at startup.
+ 1- addons (if one can call them that): this is very experimental, and curently there's one addon for tooltips in `tickle_extensions.lua`. Tooltips were added as an addon to keep the base UI smaller (not all UIs need tooltips). An addon can define its own `start_frame` and `end_frame` functions, which are called by the UI, and can be added to the UI using `ui.add_addon` at startup.
 
-2- Theme: even though there's only 16 colors in TIC-80, you could still define a `theme` table containing colors and styles for various types of items and states. The implementation of each item should decide what colors to use from there, depending on its state (and the ui state -- visible, locked, etc).
+ 2- Theme: even though there's only 16 colors in TIC-80, you could still define a `theme` table containing colors and styles for various types of items and states. The implementation of each item should decide what colors to use from there, depending on its state (and the ui state -- visible, locked, etc).
 
-You can also define standalone styles to be used in special items. Styles can be passed into the `options` parameter of the item, and if an item receives a style, it will override the theme.
+ You can also define standalone styles to be used in special items. Styles can be passed into the `options` parameter of the item, and if an item receives a style, it should use the style instead of the theme.
 
-3- Rendering steps: the UI comes with functions for all basic drawing functions in TIC-80 (rect, spr, print, etc), but you can also add your own. You can check out tiny_imui_extensions.lua for some examples. To add a rendering step:
+ 3- Rendering steps: the UI comes with functions for all basic drawing functions in TIC-80 (rect, spr, print, etc), but you can also add your own. You can check out tiny_imui_extensions.lua for some examples. To add a rendering step:
 
 ```lua
 -- define the function that will actually draw something:
