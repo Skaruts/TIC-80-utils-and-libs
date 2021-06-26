@@ -96,7 +96,7 @@ These are the functions you can use to alter the state of the UI:
 
 
 
-
+---
 
 
 ### Rendering items
@@ -111,13 +111,13 @@ To achieve this, TICkle has equivalent functions that instead of drawing, they a
  - ui.line
  - ui.clip
 
-Note: TICkle uses my own custom `clip` function, which allows nesting clipping tasks, but requires that you ALWAYS call `clip` without arguments to termineate a clipping task. You can also use `ui.with_clip` to be safe.
+Note: TICkle uses my own custom `clip` function, which allows nesting clipping tasks, but requires that you ALWAYS call `clip` without arguments to terminate a clipping task. You can also use `ui.with_clip` to be safe.
 
 
 
 
 
-
+---
 
 
 
@@ -156,9 +156,11 @@ Container("cont", 10, 10, 50, 50, function(t)
 end)
 ```
 
-##### Item Parameters
+---
 
-Every item takes at least an `id` and a position. Both the id and position are relative the parent. A width and height are optional, but if the item should receive any mouse input, then they should not be zero.
+#### Item Parameters
+
+Every item takes at least an id and a position. Both the id and position are relative the parent. A width and height are optional, but if the item should receive any mouse input, then they should not be zero.
 
 The global position of an item is accessible through the `gx` and `gy` fields of the item. This is usually what you'll want to use for rendering the item at its actual screen position, or for checking mouse input.
 
@@ -173,33 +175,32 @@ end })
 
 When you have no options to pass into the item, you can omit the table and pass in the function in its place. If you also don't have a function to pass into it, you can omit that parameter entirely (and pass `nil` to `ui.with_item` in its place). TICkle figures out internally what `options` is and organizes things accordingly.
 
-During item creation, internally, the contents of `options` are transfered to the item itself, so they become easier to work with. So, for example, `options.code` becomes `item.code`. You can use the `options` parameter to carry any settings or flags specific to your item's implementation, but you should be careful to not use any fields that would override the item's properties (id, x, y, w, h...).
+During item creation, internally, the contents of `options` are transfered to the item itself, so they become easier to work with. So, for example, `options.code` becomes `item.code`. You can use the `options` parameter to carry any settings or flags specific to your item's implementation, but you should be careful to not use any fields that would override the item's properties (id, x, y, w, h, etc...).
 
 There are three extra fields that are reserved, which are handled by the ui. Two of them can be passed in `options`:
  - `options.code` - (function) the function with the item's content/behavior
- - `options.tip`  - (string) the tooltip to be used by the item (requires a tooltip addon)
+ - `options.tip`  - (string) the tooltip of the item (requires a tooltip addon)
 
 The third reserved field is the arguments passed to the `code` function, which are stored in item.args (which will be nil, if no arguments were passed). They get automatically passed into that function's call inside `ui.with_item`, so as long as you're using `ui.with_item` you shouldn't need to care about this field. Just be aware that `options` should not carry an `args` field, to avoid potential issues.
 
+---
 
 
+#### Item ids
 
-##### Item ids
-
-Ids are strings, and can be whatever you want, but must be unique. Items with the same id may not work properly, unless they're children of different parents, since ids are relative to the item's parent. A button with a parent  can have the same id as a button with parent . If the two buttons `"b1"` are children of the parents `"p1"` and `"p2"`, then TICkle will turn their ids into `"p1.b1"` and `"p2.b1"`.
+Ids are strings, and can be whatever you want, but must be unique. Items with the same id may not work properly, unless they're children of different parents, since ids are relative to the item's parent. In the example below, the two buttons called `"b1"` are children of the parents `"c1"` and `"c2"`, then TICkle will turn their ids into `"c1.b1"` and `"c2.b1"`.
 
 ```lua
-Container("p1", 10, 10, 50, 50, function(t)
+Container("c1", 10, 10, 50, 50, function(t)
 	Button("b1", 5, 5, "Click me!")
 end)
 
-Container("p2", 60, 10, 50, 50, function(t)
+Container("c2", 60, 10, 50, 50, function(t)
 	Button("b1", 5, 5, "Click me!")   --  <-- this is fine!
 end)
 ```
 
-An item's id and local id are both stored in `item.id` and `item.lid`.
-
+---
 
 #### Cheking mouse input
 
@@ -245,7 +246,7 @@ From the item you can then call `item.code` to run it. The order of rendering an
 
 
 
-
+---
 
 
 
