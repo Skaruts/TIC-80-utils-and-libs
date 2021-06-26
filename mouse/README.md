@@ -1,4 +1,4 @@
-## TIC-80 Mouse State Handling
+# Mouse State Handling
 
 This is quite straightforward to use. First make sure you call `update_mst()` before you do any input handling, so the mouse states get updated:
 
