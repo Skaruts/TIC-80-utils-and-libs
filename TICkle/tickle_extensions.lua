@@ -1,4 +1,4 @@
-	--[[ TinyIMUI Extensions                    006 ]]
+	--[[ TICkle Extensions                      006 ]]
 		--[[ pal rendering                          002 ]]
 			-- depends on 'pal'  (drawing_utils.lua)
 			-- define 'pal' render step and rendering functions and pass them along to the ui
