@@ -40,7 +40,7 @@
 --      tostr,conc,fmt    (common_shortenings.lua)
 --      txtw              (print.lua)
 --=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--
-		--[[ Debug/benchmark utilities             018 ]]
+	--[[ Debug/benchmark utilities             018 ]]
 		--  depends on:
 		--      tostr, conc, fmt    (common_shortenings.lua)
 		--      txtw                (print.lua)
