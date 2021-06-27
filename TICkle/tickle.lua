@@ -33,7 +33,8 @@
 --      clip/with_clip    (drawing_utils.lua)
 --
 --=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--
-	--[[ TICkle Framework                       010 ]]
+	--[[ TICkle IMGUI                           010 ]]
+		-- https://github.com/Skaruts/TIC-80-utils-and-libs/tree/main/TICkle
 		-- depends on
 		--     unpk, setmt, fmt  (common_shortenings.lua)
 		--     mouse_states      (mouse/mouse_states.lua)
@@ -50,7 +51,7 @@
 			-- inactive means frozen and faded
 
 			local _NID,_NIT,_NOK="NO_ID","NO_ITEM","NO_KEY"
-			ui={
+			local ui={
 				visible=true,
 				active=true,
 				locked=false,
