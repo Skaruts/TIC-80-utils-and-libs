@@ -29,7 +29,7 @@ Then call the screen fading functions you need. The example below fades-in the s
 ```lua
 function switch_game_state(st)
 	if st == "menu" then
-		fade_in_prep()
+		fade_in_prep()                  --  <----
 		game_state = "menu"
 	elseif st == "game" then
 		-- (...)
@@ -38,7 +38,7 @@ end
 
 function TIC()
 	if game_state == "menu" then
-		fade_in()
+		fade_in()                       --  <----
 		-- do other menu stuff
 
 		draw_menu()
@@ -46,7 +46,7 @@ function TIC()
 		-- (...)
 	end
 
-	fade_commit()
+	fade_commit()                           --  <----
 
 	draw_gui()
 end
