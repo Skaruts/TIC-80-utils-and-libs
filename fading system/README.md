@@ -63,7 +63,7 @@ The parameter `fade_in` is false by default, so they prepare and perform fade-ou
 
 
 ## Blocking mode
-You'll need to include the addon in blocking_fade.lua in your code, as well as its dependencies from loop_utils.lua
+You'll need to include the addon in blocking_fade.lua in your code, as well as its dependencies from [loop_utils.lua](https://github.com/Skaruts/TIC-80-utils-and-libs/blob/main/loop_utils.lua)
 - `flip()`
 - `wait()`
 
