@@ -20,7 +20,7 @@ Keep in mind you can remove stuff you don't need from utilities that bring a lot
  - drawing_utils.lua - has a pico8-like 'pal', among other things
  - math_utils.lua - a few useful math related functions
  - table_utils.lua - some useful table handling functions
- - fading_system.lua - (WIP) if you need to do screen fade in/fade out (not documented yet)
- - TICkle - (WIP) an IMGUI I'm making for TIC-80.
+ - fading_system.lua - (WIP) if you need to do screen fade in/fade out (I've finally documented it!)
+ - TICkle - (WIP) an IMGUI I'm making for TIC-80. (Undocumented)
 
 
