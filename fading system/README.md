@@ -9,7 +9,7 @@ Use whichever you like. A word of warning though, the blocking mode is a bit hac
 ## Examples
 I've used this fading system in a [WIP roguelike](https://github.com/Skaruts/Pigventure-or-something). There I used both modes.
 
-## Regular mode
+## Normal mode
 
 The first thing you should do is configure the `_fpal` table in the fading system code according to the palette you're using. '_fpal' stores the colors to which each color fades into.
 ```lua
