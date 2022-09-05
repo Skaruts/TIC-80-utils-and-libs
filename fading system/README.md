@@ -4,7 +4,7 @@ There are two modes for this fading system:
 - the normal mode, where you control everything, and is easier to understand.
 - the blocking mode, which controls your loop so it can halt it while fading (this requires the addon in blocking_fade.lua)
 
-Use whichever you like. A word of warning though, the blocking mode is a bit hacky and more complicated, and you can probably achieve the same effect with the regular mode, anyway. It also uses `flip()`, which is a function I made that mimicks [Pico-8's flip() function](https://pico-8.fandom.com/wiki/Flip) using coroutines, and which I couldn't make 100% reliable (as explained below in [#Blocking mode](#blocking-mode)).
+Use whichever you like. A word of warning though, the blocking mode is a bit hacky and more complicated, and you can probably achieve the same effect with the regular mode, anyway. It also uses [`flip()`](https://github.com/Skaruts/TIC-80-utils-and-libs/blob/main/loop_utils.lua), which is a function I made that mimicks [Pico-8's flip() function](https://pico-8.fandom.com/wiki/Flip) using coroutines, and which I couldn't make 100% reliable (as explained below in [#Blocking mode](#blocking-mode)).
 
 ## Examples
 I've used this fading system in a [WIP roguelike](https://github.com/Skaruts/Pigventure-or-something). There I used both modes.
