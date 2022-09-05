@@ -6,6 +6,9 @@ There are two modes for this fading system:
 
 Use whichever you like. A word of warning though, the blocking mode is a bit hacky and more complicated, and you can probably achieve the same effect with the regular mode, anyway. It also uses `flip()`, which is a function I made that mimicks [Pico-8's flip() function](https://pico-8.fandom.com/wiki/Flip) using coroutines, and which I couldn't make 100% reliable (as explained below in [#Blocking mode](#blocking-mode)).
 
+## Examples
+I've used this fading system in a [WIP roguelike](https://github.com/Skaruts/Pigventure-or-something). There I used both modes.
+
 ## Regular mode
 
 The first thing you should do is configure the `_fpal` table in the fading system code according to the palette you're using. '_fpal' stores the colors to which each color fades into.
@@ -85,5 +88,4 @@ The only thing you really have to do differently is, instead of calling `fade_co
 This is because there's a bug somewhere I've never been able to fix. If you call `fade_commit()` in your own loop function, the fadings won't work properly.
 
 
-## Examples
-I've used this fading system in a [WIP roguelike](https://github.com/Skaruts/Pigventure-or-something). There I used both modes.
+
