@@ -11,7 +11,8 @@ I've used this fading system in a [WIP roguelike](https://github.com/Skaruts/Pig
 
 ## Normal mode
 
-The first thing you should do is configure the `_fpal` table in the fading system code according to the palette you're using. `_fpal` stores the colors to which each color fades into.
+If the palette you use is not the default one, then the first thing you should do is configure the `_fpal` table in the fading system code according to the palette you're using. `_fpal` stores the colors to which each color fades into.
+
 ```lua
 --       1   2  3  ...
 _fpal = {10, 5, 7, ...}
@@ -19,8 +20,6 @@ _fpal = {10, 5, 7, ...}
 The above one means color 1 fades to color 10, color 2 to 5, 3 to 7, and so on. In other words, where color 1 exists, it will be replaced by color 10, color 2 by color 5, etc.
 
 `_fpal` requires 15 elements (not 16). Color 0 is assumed to be the black color, and is not included in `_fpal`.
-
-This code was writen in TIC 0.70, so the default values in `_fpal` were set for the old palette, and since I still prefer it, I never changed it. If you use that palette, you may not have to change anything either.
 
 Once you configured `_fpal`, you should call `fade_in_prep()`, `fade_out_prep()` or `fade_prep()` before doing any actual screen fading. Those functions reset the system, so it can be used, and you should call the appropriate one only once before every screen fade.
 
