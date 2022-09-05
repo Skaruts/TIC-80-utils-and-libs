@@ -1,6 +1,6 @@
 # Screen fading
 
-I made an example cart for this fading system. You can play it [here]().
+I made an example cart for this fading system. You can play it [here](https://tic80.com/play?cart=2992).
 
 ### Usage
 
